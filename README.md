@@ -52,6 +52,31 @@ MongoDB没有关系数据库中行和表的概念，不过有类似文档和集�
 
 # 安装MongoDB
 
+## 下载
 
+[下载地址](https://www.mongodb.org/)
+
+windows下.msi有安装程序。安装目录为D:\MongoDB
+
+## 切换到
+
+在MongoDB文件夹里新建blog文件夹，作为博客内容的存储目录
+
+打开命令行，切换到D:\MongoDB\bin，输入以下命令来设置blog文件夹作为项目的存储目录并启动数据库：
+
+    mongod -dbpath D:\MongoDB\blog
+    
+为了方便以后使用数据库，在桌面上建立MongoDB.bat，并写入：
+
+    D:\MongoDB\bin\mongod.exe -dbpath D:\MongoDB\blog
+    
+以后只需运行MongoDB.bat，就可以启动数据库了
+
+---
+
+# 连接MongoDB
+
+
+    
 
 
