@@ -76,6 +76,46 @@ windows下.msi有安装程序。安装目录为D:\MongoDB
 
 # 连接MongoDB
 
+数据库虽然安装并启动成功了，但我们需要连接数据库后才能使用数据库。
+
+在package.json中，新增 mongodb 依赖，然后通过npm install安装：
+
+    "dependencies": {
+        "mongodb": "*"
+    }
+    
+接下来在根目录创建setting.js文件：
+
+    // 用于保存博客项目的配置信息
+    module.exports = {
+        // 用于Cookie加密
+        cookieSecret: 'myBlog',
+        // 数据库名称
+        db: 'blog',
+        // 数据库地址                      
+        host: 'localhost'
+    };
+    
+在根目录新建model文件夹，并在model文件夹下新建db.js
+
+    // db.js
+    var settings = require('../settings');
+    var Db = require('mongodb').Db;
+    var Connection = require('mongodb').Connection;
+    var Server = require('mongodb').Server;
+
+
+    // 通过new Db()创建了一个数据库连接实例，并通过module.exports导出该实例
+    module.exports = new Db(settings.db, new Server(settings.host, Connection.DEFAULT_PORT), { safe: true });
+    
+    
+# 会话支持
+
+会话（session）是一种持久网络协议，在用户（或用户代理）端和服务器端之间创建关联，从而起到交换数据包的作用。
+session在网络协议（如Telnet或FTP）中是非常重要的部分。
+
+
+
 
     
 
